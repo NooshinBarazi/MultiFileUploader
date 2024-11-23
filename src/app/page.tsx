@@ -26,7 +26,7 @@ export default function Home() {
   };
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-    let files = event.target.files;
+    const files = event.target.files;
     if (files) {
       const selectedFiles = Array.from(files);
       prepareDataAndValidation(selectedFiles);
