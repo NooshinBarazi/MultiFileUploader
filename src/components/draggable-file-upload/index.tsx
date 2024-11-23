@@ -1,13 +1,12 @@
 import { ArrowUpOnSquareStackIcon } from "@heroicons/react/24/outline";
-import { FC } from "react";
+import { ChangeEvent, FC } from "react";
 
 const DraggableFileUpload: FC<{
-    isDragging: boolean
-    setIsDragging: (state:boolean) => void
-    onChange: (e:any) => void,
-    onDrop: (e:any) => void
-    [key: string]: any;
-}> = ({ isDragging, setIsDragging, onChange, onDrop,...props }) => {
+  isDragging: boolean;
+  setIsDragging: (state: boolean) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onDrop: (e: React.DragEvent<HTMLDivElement>) => void;
+}> = ({ isDragging, setIsDragging, onChange, onDrop }) => {
   const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault();
     event.stopPropagation();
@@ -43,8 +42,6 @@ const DraggableFileUpload: FC<{
         <input
           type="file"
           multiple
-          max={4}
-          maxLength={4}
           id="image"
           className="hidden"
           onChange={onChange}
