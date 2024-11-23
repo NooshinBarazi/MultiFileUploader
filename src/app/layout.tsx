@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { FileManagerProvider } from "@/store";
+import "react-toastify/dist/ReactToastify.css";
+import ToastContainerNOSSR from "@/components/toast-container";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,11 +28,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <FileManagerProvider>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <nav className="px-6 py-2">
+            <h1>Multi Uploader</h1>
+          </nav>
+          {children}
+          <ToastContainerNOSSR />
+        </body>
+      </FileManagerProvider>
     </html>
   );
 }
